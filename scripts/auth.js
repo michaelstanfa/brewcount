@@ -43,7 +43,7 @@ async function setUser() {
 
       let usersCollection = fs.collection('users');
 
-      usersCollection.doc(firebaseUser.uid).get().then(function(doc){
+      usersCollection.doc(user.uid).get().then(function(doc){
         $("#signed_in_user_drinks").html(doc.data().drinkCount)
       });
         
@@ -55,7 +55,6 @@ async function setUser() {
   })
 
 }
-
 
 function hideLoginButton() {
 

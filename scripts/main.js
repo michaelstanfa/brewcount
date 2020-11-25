@@ -43,6 +43,25 @@ const loadDrinkCounter = async (fs) => {
   });
 
   $("#all_drink_counter").html(allDrinkCounter);
+
+  if(allDrinkCounter < countMessage.nice) {
+    hideNiceLink(true)
+  } else {
+    hideNiceLink(false);
+  }
+
+  if(allDrinkCounter === countMessage.nice) {
+    showNiceModal();
+  }
+
+}
+
+const hideNiceLink = async (hide) => {
+  $("#over_the_hump").attr("hidden", hide);
+}
+
+const showNiceModal = async () => {
+  $("#nice-modal").modal({'show':true});
 }
 
 const loadEverybody = async () => {
@@ -102,7 +121,7 @@ const subtractOneDrink = async () => {
   	return doc.data().drinkCount;
   });
 
-  let newDrinkCount = currentDrinkCount - 1;
+  let newDrinkCount = currentDrinkCount === 0 ? 0 : currentDrinkCount - 1;
 
   await usersCollection.doc(currentUser.uid).set(
 	{
