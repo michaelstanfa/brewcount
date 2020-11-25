@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" src="/app.css">
+
+<meta name="google-signin-client_id" content="858817784611-oncrkm0h51p892eb6sct5iah9m6rsq2u.apps.googleusercontent.com">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
+
+<title>brewcount</title>
+
+<script src="toggles.js"></script>
+<style>
+	.container {
+	text-align: center;
+}
+</style>
+
+<div style="background-color:#F5F5F5" class = "banner">
+
+	<h1 style="display:inline-block">brewcount  |  </h1>
+	<div style="display:inline-block">
+		<h4 style="display:inline-block" id = "user_first_last"></h4>
+		<h4 style="display:inline-block" id = "user_record"></h4>
+	</div>
+	
+	<div id = "headers_links">
+
+		<a hidden id = "sign_out" style="display:inline-block" href="#" onclick="signOut();"><h5>sign out</h5></a>
+
+		<div style="display:inline-block" id = "login_signup_header">
+
+			
+			<div data-prompt='select_account consent' style="display:inline-block" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
+			or <a style="display:inline-block" href="./signup.html">sign up</a></div>
+
+
+       	</div>
+
+
+
+       	<br>
+
+	</div>	
+
+</div>
