@@ -111,7 +111,6 @@ async function onSignIn(googleUser) {
 
     }
 
-    window.location.href = "./index.html";
   });
 
   $("#calculate_record_button").attr("hidden", false);

@@ -33,6 +33,8 @@ const buildUserInFirestore = async () => {
 
 			}
 		});*/
+
+		window.location.href = "./index.html";
 		
 	});
 }
