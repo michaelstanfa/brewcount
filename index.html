@@ -31,12 +31,11 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
-  <script src="props.js"></script>
+  
   <script src="toggles.js"></script>
   <script src="scripts/main.js"></script>
   <script src="scripts/util.js"></script>
   <script src="scripts/admin.js"></script>
-  
   <script src="scripts/auth.js"></script>
   <script type = "text/javascript"></script>
   <script src="scripts/signup.js"></script>
@@ -63,6 +62,7 @@
 <script>
 $(function() {
   $("#header").load("header.html");
+  $("#footer").load("footer.html");
 })
 </script>
 
@@ -91,25 +91,25 @@ table {
 <div id = "header"></div>
 
 <body class="container main">
+  <h5 style="display:inline" id = "user_first_last">
+  my drink count: 
+  <p style="display:inline" id = "signed_in_user_drinks"></p>
+  </h5>
 
-  <div id = "picks_html" hidden>
-    <br>
+  <div>
+    <button type="button" class="btn btn-danger" onclick = "subtractOneDrink()">too durnk, subtrat</button>
+    <button type="button" class="btn btn-success" onclick = "addOneDrink()">bartender, one more</button>
+  </div>
+
+
+  <div id = "drink_table">
     
-    <br><br>
-    <div id = "current_user_picks">
-      You haven't made your picks yet.
-    </div>
-    
-    <div id = "this_week_games"></div>
+    THIS IS WHERE THE DRINKS GO
+
+  </div>
 
 </body>
 
-  <div class = "footer-container">
-    <button id = "submit-button" value = "submit" onclick = "validatePicks()" class="btn btn-submit btn-primary">Submit</button>
-    <br/>
-    <br/>
-  </div>
-  
 </div>
 
 <div id = "sign_in_or_sign_up_to_pick_html">

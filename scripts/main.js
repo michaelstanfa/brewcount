@@ -26,16 +26,57 @@ const getFirestore = async () => {
 	return fs;
 }
 
-const getSchedule = async () => {
-	return new Promise(function(resolve, reject){
-		if(null == schedule) {
-			resolve(retrieveSched());
-		} else {
-			resolve(schedule);
-		}	
-	})
-}
-
 const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
+const subtractOneDrink = async () => {
+  let fs = firebase.firestore();
+
+  let usersCollection = fs.collection('users');
+  let currentUser = firebase.auth().currentUser;
+  let currentDrinkCount = await usersCollection.doc(currentUser.uid).get().then(function(doc){
+  	return doc.data().drinkCount;
+  });
+
+  let newDrinkCount = currentDrinkCount - 1;
+
+  await usersCollection.doc(currentUser.uid).set(
+	{
+		name: currentUser.displayName,
+		drinkCount: newDrinkCount
+		
+	});
+
+  $("#signed_in_user_drinks").html(newDrinkCount);
+
+  
+}
+
+const addOneDrink = async () => {
+  let fs = firebase.firestore();
+
+  let usersCollection = fs.collection('users');
+  let currentUser = firebase.auth().currentUser;
+  let currentDrinkCount = await usersCollection.doc(currentUser.uid).get().then(function(doc){
+  	return doc.data().drinkCount;
+  });
+
+  let newDrinkCount = currentDrinkCount + 1;
+
+  await usersCollection.doc(currentUser.uid).set(
+	{
+		name: currentUser.displayName,
+		drinkCount: newDrinkCount
+		
+	});
+
+  $("#signed_in_user_drinks").html(newDrinkCount);
+
+  
+}
+
+const getFBUser = async () => {
+	let firebaseUser = await firebase.auth().currentUser != null ? firebase.auth().currentUser : null;
+	return firebaseUser;
 }

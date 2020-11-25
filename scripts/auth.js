@@ -1,17 +1,17 @@
 let currentGoogleUser;
 
-function UserData(name, email, photoURL, season, admin) {
+/*function UserData(name, email, photoURL, season, admin) {
   this.name = name,
   this.email = email,
   this.photoURL = photoURL,
   this.season = season,
   this.admin = admin;
-}
+}*/
 
-function UserIDAndData(id, userData) {
+/*function UserIDAndData(id, userData) {
   this.id = id,
   this.userData = userData;
-}
+}*/
 
 function authenticate() {
     if(gapi.auth2.getAuthInstance().isSignedIn.get()){
@@ -105,7 +105,15 @@ async function onSignIn(googleUser) {
         
         buildUserInFirestore();
     } else {
+      console.log(firebaseUser);
       $("#user_first_last").html(firebaseUser.displayName);
+      let fs = firebase.firestore();
+
+      let usersCollection = fs.collection('users');
+
+      usersCollection.doc(firebaseUser.uid).get().then(function(doc){
+        $("#signed_in_user_drinks").html(doc.data().drinkCount)
+      });
       
       console.log('User already signed-in Firebase.');
 
@@ -152,13 +160,12 @@ async function onSignUp(firstSignUp) {
 
   let usersCollection = fs.collection('users');
 
-  usersCollection.doc(user.uid).get().then(function(data){
+  /*usersCollection.doc(user.uid).get().then(function(data){
     alert(data.data());
-  });
+  });*/
   
+
   $("#user_first_last").html(user.displayName);
-  $("#picks_html").attr("hidden", false);
-  $("#sign_in_or_sign_up_to_pick_html").attr("hidden", true);
 
   hideLoginButton();
 

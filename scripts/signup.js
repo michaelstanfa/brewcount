@@ -3,38 +3,28 @@ const buildUserInFirestore = async () => {
 	let auth = await gapi.auth2.getAuthInstance();
 
 	let e =await auth.currentUser.get().getBasicProfile();
-
+	console.log(e);
 	await firebase.auth().onAuthStateChanged(async function(user) {
 		let fs = firebase.firestore();
-		//let usersCollection = fs.collection('users');
+		let usersCollection = fs.collection('users');
 
-/*		usersCollection.doc(user.uid).get().then(async function(doc){
+		usersCollection.doc(user.uid).get().then(async function(doc){
 			if(!doc.exists) {
 				console.log("getting " +  user + " signed up");
 				let currentUser = await firebase.auth().currentUser;
 				console.log(currentUser);
-				usersCollection.doc(currentUser.uid).set(
+				await usersCollection.doc(currentUser.uid).set(
 				{
 					name: currentUser.displayName,
-					email: currentUser.email,
-					photoURL: currentUser.photoURL,
-					admin: false
+					drinkCount: 0
+					
 				});
 
-				let thisYear = '202021';
-
-				await usersCollection.doc(currentUser.uid).collection('seasons').doc(thisYear).set(
-					{
-						paid: false,
-						wins: 0,
-						losses: 0
-					}
-				);
+			window.location.href = "./index.html";		
 
 			}
-		});*/
 
-		window.location.href = "./index.html";
+		});
 		
 	});
 }
