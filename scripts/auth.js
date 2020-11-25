@@ -40,7 +40,7 @@ async function setUser() {
       $("#all_data").attr("hidden", false);
 
       $("#user_first_last").html(user.displayName);
-      $("#signed_in_user_drinks").html(doc.data().drinkCount)
+      $("#signed_in_user_drinks").html(doc.data().drinkCount);
       $("#login_html").attr("hidden", true);
       await hideLoginButton()
     }
