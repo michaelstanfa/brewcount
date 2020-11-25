@@ -37,6 +37,8 @@ async function setUser() {
 
     if(user) {
 
+      $("#all_data").attr("hidden", false);
+
       $("#user_first_last").html(user.displayName);
 
       $("#login_html").attr("hidden", true);
@@ -78,7 +80,6 @@ async function onSignIn(googleUser) {
 
 
       await firebase.auth().signInWithCredential(credential).then(async function(user) {
-        console.log(user);
         $("#user_first_last").html(user.displayName);
       }).catch(function(error) {
         // Handle Errors here.
@@ -92,7 +93,6 @@ async function onSignIn(googleUser) {
         
         buildUserInFirestore();
     } else {
-      console.log(firebaseUser);
       $("#user_first_last").html(firebaseUser.displayName);
       let fs = firebase.firestore();
 
@@ -119,7 +119,7 @@ function isUserEqual(googleUser, firebaseUser) {
     for (var i = 0; i < providerData.length; i++) {
       if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID &&
           providerData[i].uid === googleUser.getBasicProfile().getId()) {
-        // We don't need to reauth the Firebase connection.
+
         return true;
       }
     }
@@ -147,11 +147,6 @@ async function onSignUp(firstSignUp) {
 
   let usersCollection = fs.collection('users');
 
-  /*usersCollection.doc(user.uid).get().then(function(data){
-    alert(data.data());
-  });*/
-  
-
   $("#user_first_last").html(user.displayName);
 
   hideLoginButton();
@@ -160,6 +155,7 @@ async function onSignUp(firstSignUp) {
 }
 
 function signoutProcess() {
+  $("#all_data").attr("hidden", true);
   $("#sign_out").attr("hidden", true);
   $("#login_signup_header").attr("hidden", false);
   $("#user_first_last").html("");
