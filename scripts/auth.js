@@ -1,18 +1,5 @@
 let currentGoogleUser;
 
-/*function UserData(name, email, photoURL, season, admin) {
-  this.name = name,
-  this.email = email,
-  this.photoURL = photoURL,
-  this.season = season,
-  this.admin = admin;
-}*/
-
-/*function UserIDAndData(id, userData) {
-  this.id = id,
-  this.userData = userData;
-}*/
-
 function authenticate() {
     if(gapi.auth2.getAuthInstance().isSignedIn.get()){
         return gapi.auth2.getAuthInstance();
