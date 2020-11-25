@@ -110,6 +110,8 @@ async function onSignIn(googleUser) {
       console.log('User already signed-in Firebase.');
 
     }
+
+    window.location.href = "./index.html";
   });
 
   $("#calculate_record_button").attr("hidden", false);

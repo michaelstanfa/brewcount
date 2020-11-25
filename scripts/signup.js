@@ -6,9 +6,9 @@ const buildUserInFirestore = async () => {
 
 	await firebase.auth().onAuthStateChanged(async function(user) {
 		let fs = firebase.firestore();
-		let usersCollection = fs.collection('users');
+		//let usersCollection = fs.collection('users');
 
-		usersCollection.doc(user.uid).get().then(async function(doc){
+/*		usersCollection.doc(user.uid).get().then(async function(doc){
 			if(!doc.exists) {
 				console.log("getting " +  user + " signed up");
 				let currentUser = await firebase.auth().currentUser;
@@ -31,9 +31,9 @@ const buildUserInFirestore = async () => {
 					}
 				);
 
-				window.location.href = "./index.html";
 			}
-		});
+		});*/
+		
 	});
 }
 
