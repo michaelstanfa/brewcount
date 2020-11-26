@@ -44,24 +44,42 @@ const loadDrinkCounter = async (fs) => {
 
   $("#all_drink_counter").html(allDrinkCounter);
 
-  if(allDrinkCounter < countMessage.nice) {
-    hideNiceLink(true)
+  if(allDrinkCounter >= countMessage.nice) {
+    showNiceLink(false)
   } else {
-    hideNiceLink(false);
+    showNiceLink(true);
+  }
+
+  if(allDrinkCounter >= countMessage.dance) {
+    showDanceLink(false)
+  } else {
+    showDanceLink(true);
   }
 
   if(allDrinkCounter === countMessage.nice) {
     showNiceModal();
   }
 
+  if(allDrinkCounter === countMessage.dance) {
+    showDanceModal();
+  }
+
 }
 
-const hideNiceLink = async (hide) => {
+const showNiceLink = async (hide) => {
   $("#over_the_hump").attr("hidden", hide);
 }
 
 const showNiceModal = async () => {
   $("#nice-modal").modal({'show':true});
+}
+
+const showDanceLink = async (hide) => {
+  $("#dance_modal_div").attr("hidden", hide);
+}
+
+const showDanceModal = async () => {
+  $("#dance-modal").modal({'show':true});
 }
 
 const loadEverybody = async () => {
@@ -148,10 +166,14 @@ const determineEmoji = (count) => {
     return '&#129322' //party face
   } else if (count > 7 && count <= 10) {
     return '&#129326' //puke
-  } else if (count > 11 && count <= 14) {
-    return '&#129503'
+  } else if (count > 10 && count <= 14) {
+    return '&#129395' //partyhat 
+  } else if (count > 14 && count <= 19) {
+    return '&#129503' //zombie
+  } else if (count > 19 && count <= 24) {
+    return '&#128128' //skull
   } else {
-    return '&#128128'
+    return '<img src="../images/paul_bearer.gif" width=200>';
   }
 }
 

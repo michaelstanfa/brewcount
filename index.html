@@ -86,9 +86,7 @@ table {
 
 #header{
 	font-weight: bold;
-}
-
-</style>
+}</style>
 
 <div id = "header"></div>
 
@@ -112,6 +110,12 @@ table {
   <div id = "over_the_hump">
     we hit 69,
     <button class = "btn btn-link" id = "nice_modal_link" onclick="showNiceModal()">nice</button>
+
+  </div>
+
+    <div id = "dance_modal_div">
+    we hit 200,
+    <button class = "btn btn-link" id = "dance_modal_link" onclick="showDanceModal()">let's dance</button>
 
   </div>
 
@@ -155,6 +159,31 @@ table {
         </div>
       </div>
     </div>
+
+
+    <div class="modal fade" id="dance-modal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">time to dance, baby</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <p>party</p>
+            <div id = "modal-gif-dance">
+              <img src="../brewcount/images/undertaker.gif" width=300></br></br>
+            </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">X</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
 

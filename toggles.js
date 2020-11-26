@@ -1,8 +1,7 @@
 togglz = {
 	disableOtherWeekSubmissions: false,
 	testingDate: false,
-	lockPicks: true,
-	nice: 6
+	lockPicks: true
 }
 
 testDate = {
@@ -14,5 +13,6 @@ testDate = {
 }
 
 countMessage = {
-	nice: 69
+	nice: 69,
+	dance: 139
 }
