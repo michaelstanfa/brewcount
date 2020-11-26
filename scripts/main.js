@@ -84,12 +84,14 @@ const loadEverybody = async () => {
 	table += TR_OPEN;
 	table += TH_OPEN + "Drinker" + TH_CLOSE;
 	table += TH_OPEN + "Drinks" + TH_CLOSE;
+  table += TH_OPEN + "Live Look" + TH_CLOSE;
 	table += TR_CLOSE;
 
-	sortedUsers.forEach(function(user) {
+	sortedUsers.forEach(async function(user) {
 		table += TR_OPEN;
 		table += TD_OPEN + user.name + TD_CLOSE;
 		table += TD_OPEN + user.drinkCount + TD_CLOSE;
+    table += TD_OPEN + determineEmoji(user.drinkCount) + TD_CLOSE;
 		table += TR_CLOSE;
 	});
 
@@ -135,6 +137,22 @@ const subtractOneDrink = async () => {
   loadEverybody();
 
   
+}
+
+const determineEmoji = (count) => {
+  if(count === 0) {
+    return '&#128118' //baby
+  } else if (count > 0 && count <= 4) {
+    return '&#128522' //smiley
+  } else if (count > 4 && count <= 7) {
+    return '&#129322' //party face
+  } else if (count > 7 && count <= 10) {
+    return '&#129326' //puke
+  } else if (count > 11 && count <= 14) {
+    return '&#129503'
+  } else {
+    return '&#128128'
+  }
 }
 
 const addOneDrink = async () => {
