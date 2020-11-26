@@ -14,5 +14,5 @@ testDate = {
 
 countMessage = {
 	nice: 69,
-	dance: 139
+	dance: 200
 }
