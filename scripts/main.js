@@ -173,7 +173,7 @@ const determineEmoji = (count) => {
   } else if (count > 19 && count <= 24) {
     return '&#128128' //skull
   } else {
-    return '<img src="../images/paul_bearer.gif" width=200>';
+    return '<img src="../brewcount/images/paul_bearer.gif" width=200>';
   }
 }
 
